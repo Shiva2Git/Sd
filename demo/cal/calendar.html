@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* Styles for the modal popup */
+#popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Styles for the form inside the modal */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+input,
+textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+  </style>
+</head>
+<body>
+  <div id="popup" >   
+    <div id="modalOne" class="modal" sty>
+      <div class="modal-content">
+        <div class="event-form">
+          <a class="close">&times;</a>
+          <form action="#">
+            <h2>Event</h2>
+            <div>
+            <input id="event" type="text" name="name" placeholder="event Name" />
+            <input type="text" name="date" id="Date"/>
+            </div>
+            <span>Details</span>
+            <div>
+            <input id="textArea" type="text"> 
+            </div>
+            <button id="submitbtn" type="button">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+</body>
+</html>
