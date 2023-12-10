@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/static/js/script.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="chatboxid" class="chatbox" style="display: none;">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header">
+                    <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
+                </div>
+                <div class="chatbox__content--header">
+                    <h3 class="chatbox__heading--header">Admin</h3>
+                </div>
+                <button class="chatbox_close-btn"><img id="close-btn" src="../static/img/close-line-icon.svg" /></button>
+            </div>
+            <div class="chatbox__messages" >
+                <div id="chatbox__messages"></div>
+            </div>
+            <div class="chatbox__footer">
+                <input type="text" id="chat" placeholder="Write a message...">
+                <button class="chatbox__send--footer send__button" id="sendbtn">Send</button>
+            </div>
+        </div>
+        </div>
+       
+        </div>
+ <div class="chatbox__button"  id="showChatbot">
+            <button id="showbtn"><img src="/static/img/chatbox-icon.svg" /></button>
+        </div>
+       
+
+  
+</body>
+</html>
