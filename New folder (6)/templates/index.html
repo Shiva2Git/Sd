@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscriber Search</title>
+</head>
+<body>
+    <label for="searchInput">Search Subscriber:</label>
+    <input type="text" id="searchInput" oninput="getAutocompleteSuggestions(this.value)">
+    <ul id="autocompleteList"></ul>
+
+    <script>
+        function getAutocompleteSuggestions(prefix) {
+            fetch(`/autocomplete/${prefix}`)
+                .then(response => response.json())
+                .then(suggestions => {
+                    const autocompleteList = document.getElementById('autocompleteList');
+                    autocompleteList.innerHTML = '';
+
+                    suggestions.forEach(suggestion => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = suggestion;
+                        autocompleteList.appendChild(listItem);
+                    });
+                });
+        }
+    </script>
+</body>
+</html>
