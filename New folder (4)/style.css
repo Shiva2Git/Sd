@@ -1,0 +1,143 @@
+/* BUTTON */
+.chatbox__button { 
+    text-align: right;
+    
+} 
+#showbtn{
+    position: fixed;
+    right: 0;
+}
+
+.chatbox_close-btn {
+    margin-left: 190px;
+    background-color: #FFF;
+    padding: 10px 15px; 
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    color: #333; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+/* Hover effect */
+.chatbox_close-btn:hover {
+    background-color: #eee; /* Change background color on hover */
+}
+
+
+.chatbox__button button,
+.chatbox__button button:focus,
+.chatbox__button button:visited {
+    padding: 10px;
+    background:linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+    border: none;
+    outline: none;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    margin-top: 40%;
+    margin-right: 30px;
+}
+/* Basic styling for the chatbox container */
+.chatbox {
+    
+    max-width: 400px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-left: 50%;
+    margin-top: 15%;
+    overflow: hidden;
+}
+
+/* Styling for the support section */
+.chatbox__support {
+    background-color: #f4f4f4;
+}
+
+/* Styling for the header section */
+.chatbox__header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #ddd;
+    background:linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);;
+}
+
+.chatbox__image--header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.chatbox__content--header {
+    width: 50%;
+}
+
+
+.chatbox__messages {
+    padding: 10px;
+    min-height: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+
+.chatbox__footer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    height: 20%;
+  
+}
+
+
+.chatbox__footer input {
+    flex: 1;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    height: 19px;
+    width: 1px;
+    border-radius: 10px;
+    
+}
+
+.chatbox__footer button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.chatbox__footer button:hover {
+    background-color: #45a049;
+}
+.showbtn{
+    text-align: right;
+}
+.send_chat{
+    text-align: end;
+    font-size: 15px;
+    margin:2%;
+}
+.send_time{
+    margin-left: 90%;
+    text-align: justify;
+    font-size: 10px;
+}
+
+.recive_chat{
+    font-size: 15px;
+    margin:2%;
+}
+
+.recive_time{
+    font-size: 10px;
+}

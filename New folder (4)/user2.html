@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* BUTTON */
+.chatbox__button { 
+    text-align: right;
+    
+} 
+#showbtn{
+    position: fixed;
+    right: 0;
+}
+
+.chatbox_close-btn {
+    margin-left: 190px;
+    background-color: #FFF;
+    padding: 10px 15px; 
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    color: #333; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+/* Hover effect */
+.chatbox_close-btn:hover {
+    background-color: #eee; /* Change background color on hover */
+}
+
+
+.chatbox__button button,
+.chatbox__button button:focus,
+.chatbox__button button:visited {
+    padding: 10px;
+    background:linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+    border: none;
+    outline: none;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    margin-top: 40%;
+    margin-right: 30px;
+}
+/* Basic styling for the chatbox container */
+.chatbox {
+    
+    max-width: 400px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-left: 50%;
+    margin-top: 15%;
+    overflow: hidden;
+}
+
+/* Styling for the support section */
+.chatbox__support {
+    background-color: #f4f4f4;
+}
+
+/* Styling for the header section */
+.chatbox__header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #ddd;
+    background:linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);;
+}
+
+.chatbox__image--header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.chatbox__content--header {
+    width: 50%;
+}
+
+
+.chatbox__messages {
+    padding: 10px;
+    min-height: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+
+.chatbox__footer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    height: 20%;
+  
+}
+
+
+.chatbox__footer input {
+    flex: 1;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    height: 19px;
+    width: 1px;
+    border-radius: 10px;
+    
+}
+
+.chatbox__footer button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.chatbox__footer button:hover {
+    background-color: #45a049;
+}
+.showbtn{
+    text-align: right;
+}
+.send_chat{
+    text-align: end;
+    font-size: 15px;
+    margin:2%;
+}
+.send_time{
+    margin-left: 90%;
+    text-align: justify;
+    font-size: 10px;
+}
+
+.recive_chat{
+    font-size: 15px;
+    margin:2%;
+}
+
+.recive_time{
+    font-size: 10px;
+}
+    </style>
+</head>
+<body>
+    
+    <script>
+        var head = document.querySelector("head");
+var body = document.querySelector("body");
+var div = document.createElement("div");
+
+var stylesheet = document.createElement("link");
+stylesheet.setAttribute("rel", "stylesheet");
+stylesheet.href = "style.css";
+head.appendChild(stylesheet);
+
+var chatbot = `<div id="chatboxid" class="chatbox" style="display: none;">
+<div class="chatbox__support">
+<div class="chatbox__header">
+    <div class="chatbox__image--header">
+        <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
+    </div>
+    <div class="chatbox__content--header">
+        <h3 class="chatbox__heading--header">User2</h3>
+    </div>
+    <button class="chatbox_close-btn"><img id="close-btn" src="close-line-icon.svg" /></button>
+</div>
+<div class="chatbox__messages" >
+    <div id="chatbox__messages"></div>
+</div>
+<div class="chatbox__footer">
+    <input type="text" id="chat" placeholder="Write a message...">
+    <button class="chatbox__send--footer send__button" id="sendbtn">Send</button>
+</div>
+</div>
+</div>`;
+body.innerHTML += chatbot;
+
+var HTML = `<div class="chatbox__button" id="showChatbot">
+    <button id="showbtn"><img src="chatbox-icon.svg" /></button>
+</div>`;
+body.innerHTML += HTML;
+
+function TY() {
+    document.querySelector(".chatbox__button").addEventListener("click", function () {
+        document.getElementById("showbtn").style.display = "none";
+        document.getElementById("chatboxid").style.display = "block";
+    });
+
+    document.getElementById("close-btn").addEventListener("click", function () {
+        document.getElementById("chatboxid").style.display = "none";
+        document.getElementById("showbtn").style.display = "block";
+    });
+
+    const input = document.querySelector('input');
+    input.addEventListener('keyup', function (e) {
+        if (e.keyCode === 13) {
+            document.getElementById("sendbtn").click();
+        }
+    });
+}
+
+function LoadScripts(callback) {
+    var script1 = document.getElementById("script1");
+    var script2 = document.getElementById("script2");
+
+    if (!script1 && !script2) {
+        script1 = document.createElement("script");
+        script1.src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js";
+        script1.id = "script1";
+
+        script2 = document.createElement("script");
+        script2.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js";
+        script2.id = "script2";
+
+        script2.onload = callback;
+
+        head.appendChild(script1);
+        head.appendChild(script2);
+    } else {
+        callback();
+    }
+}
+
+var temp_chat
+
+document.addEventListener("DOMContentLoaded", function () {
+    TY();
+    const username='Chaymae Naim'
+    LoadScripts(function () {
+        var socket = io.connect("http://192.168.1.8:5000");
+        socket.on('connect', function () {
+            socket.send("User connected");
+            });
+    
+
+        socket.on('message', function (data) {
+            if(username==data.resiver){
+                var ptag = document.createElement("p");
+                var span = document.createElement("span");
+                span.className = "recive_time";
+                span.innerHTML =data.time
+                ptag.className = "recive_chat";
+                ptag.innerHTML = data.message;
+                document.getElementById("chatbox__messages").appendChild(span);
+                document.getElementById("chatbox__messages").appendChild(ptag);
+            }
+        });
+
+
+        $('#sendbtn').on('click', function () {
+            var chat = document.getElementById("chat").value;
+            
+            if (chat === "") {
+                return false;
+            } else {
+                var sendTime=new Date().getHours()
+                sendTime=sendTime>12?sendTime-12:sendTime
+                var AMPM=sendTime>12?"PM":"AM"
+		        var min=new Date().getMinutes()<10?+"0"+new Date().getMinutes():new Date().getMinutes()
+                sendTime+=":"+min+" "
+                var Time=sendTime+AMPM
+                var ptag = document.createElement("p");
+                var span = document.createElement("span");
+                span.className = "send_time";
+                span.innerHTML = Time
+                var chatTime = span.textContent;
+                ptag.className = "send_chat";
+                ptag.innerHTML = chat;
+                document.getElementById("chatbox__messages").appendChild(span);
+                document.getElementById("chatbox__messages").appendChild(ptag);
+                socket.send({"sender":username,"resiver":"shiva35123","message":chat,"time":Time});
+                $('#chat').val('');
+                
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>

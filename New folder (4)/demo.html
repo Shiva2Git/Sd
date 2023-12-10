@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Data from localStorage</title>
+</head>
+<body>
+
+    <label for="nameInput">Enter your name:</label>
+    <input type="text" id="nameInput">
+    <button onclick="saveName()">Save</button>
+    <button onclick="clearData()">Clear Data</button>
+
+    <h1 id="savedNames"></h1>
+
+    <script>
+        // Function to save a name to localStorage
+        function saveName() {
+            // Get the input value
+            var name = document.getElementById("nameInput").value;
+
+            // Check if the name is not empty
+            if (name.trim() !== "") {
+                // Retrieve existing names array from localStorage
+                var existingNames = localStorage.getItem("user_names");
+                var namesArray = existingNames ? JSON.parse(existingNames) : [];
+
+                // Add the new name to the array
+                namesArray.push(name);
+
+                // Save the updated names array to localStorage
+                localStorage.setItem("user_names", JSON.stringify(namesArray));
+
+                // Display the saved names as an h1 element
+                displaySavedNames();
+            }
+        }
+
+        // Function to display saved names
+        function displaySavedNames() {
+            // Retrieve the names array from localStorage
+            var existingNames = localStorage.getItem("user_names");
+            var namesArray = existingNames ? JSON.parse(existingNames) : [];
+
+            // Display the saved names as an h1 element
+            document.getElementById("savedNames").textContent = "Saved Names: " + namesArray.join(", ");
+        }
+
+        // Function to clear data from localStorage
+        function clearData() {
+            // Remove the "user_names" item from localStorage
+            localStorage.removeItem("user_names");
+
+            // Clear the displayed names
+            document.getElementById("savedNames").textContent = "Saved Names: ";
+        }
+
+        // Function to load data from localStorage when the page loads
+        window.onload = function () {
+            // Display the saved names when the page loads
+            displaySavedNames();
+        };
+    </script>
+
+</body>
+</html>

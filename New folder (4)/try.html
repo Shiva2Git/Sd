@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="chatbox">
+        <div id="chatbox__messages"></div>
+        <input type="text" id="chat" placeholder="Type your message...">
+        <button id="sendbtn">Send</button>
+    </div>
+    <script>
+        var chat_index=document.getElementById("chatbox__messages")
+        $(document).ready(function(){
+            var socket = io.connect("http://192.168.1.8:5000");
+
+            socket.on('connect', function(){
+                socket.send("User connected");
+            });
+
+            socket.on("chat", function(data){
+                var replay=fetch('http://192.168.1.8:5000/getChat')
+                .then(mgs=>mgs.json)
+                // .then(mgs=>)
+                $('#chatbox__messages').append($('<p>').text(data));
+            });
+            $('#sendbtn').on('click', function(){
+                // var message = $('#chat').val().trim();
+                // var ptag=document.createElement("p")
+                // ptag.innerHTML=$('#chat').val()
+                chat_index.appendChild(ptag)
+                if (message !== '') {
+                    socket.send(message);
+                    $('#chat').val('');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
